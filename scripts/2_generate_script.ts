@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import axios from 'axios';
-import { GoogleGenAI } from '@google/genai';
 import { ContentIdea, VideoScriptData } from '../remotion/types.js';
 
 dotenv.config();
@@ -189,20 +188,20 @@ Return ONLY pure JSON. No markdown backticks, no explanations.
 
     if (geminiApiKey) {
       console.log('[Step 2] Querying Google Gemini API...');
-      const ai = new GoogleGenAI({ apiKey: geminiApiKey });
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: [
-          { role: 'user', parts: [{ text: `${SYSTEM_PROMPT}\n\n${userPrompt}` }] }
-        ],
-        config: {
-          responseMimeType: 'application/json',
-          temperature: 0.7,
+      const response = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`,
+        {
+          contents: [{ role: 'user', parts: [{ text: `${SYSTEM_PROMPT}\n\n${userPrompt}` }] }],
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
         },
-      });
+        { headers: { 'Content-Type': 'application/json' }, timeout: 60000 }
+      );
 
-      const responseText = response.text || '';
-      scriptJson = JSON.parse(responseText.replace(/```json/g, '').replace(/```/g, '').trim());
+      const candidate = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      scriptJson = JSON.parse(candidate.replace(/```json/g, '').replace(/```/g, '').trim());
     } else if (anthropicApiKey) {
       console.log('[Step 2] Querying Anthropic Claude API...');
       const res = await axios.post(
