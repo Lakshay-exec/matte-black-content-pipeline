@@ -1,0 +1,42 @@
+{
+  "name": "matte-black-content-pipeline",
+  "version": "1.0.0",
+  "description": "Automated matte-black mannequin content creation and publishing pipeline for YouTube and Instagram",
+  "main": "remotion/Root.tsx",
+  "scripts": {
+    "start": "remotion studio remotion/Root.tsx",
+    "build": "tsc --noEmit",
+    "pipeline": "tsx scripts/run_pipeline.ts",
+    "pipeline:dry": "tsx scripts/run_pipeline.ts --dry-run --skip-publish",
+    "step1:idea": "tsx scripts/1_fetch_idea.ts",
+    "step2:script": "tsx scripts/2_generate_script.ts",
+    "step3:images": "tsx scripts/3_generate_images.ts",
+    "step4:audio": "python scripts/4_generate_audio.py",
+    "step5:publish": "tsx scripts/5_publish.ts",
+    "render:short": "remotion render ShortVideo out/short.mp4 --props=temp/data_short.json",
+    "render:long": "remotion render LongVideo out/long.mp4 --props=temp/data_long.json"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.758.0",
+    "@google/genai": "^0.1.2",
+    "@remotion/cli": "^4.0.280",
+    "@remotion/media-utils": "^4.0.280",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.280",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
