@@ -77,19 +77,19 @@ jobs:
           CLOUDFLARE_R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
           CLOUDFLARE_R2_PUBLIC_URL: ${{ secrets.CLOUDFLARE_R2_PUBLIC_URL }}
         run: |
-          ARGS=""
+          ARGS=()
           if [ "${{ inputs.skip_publish }}" = "true" ]; then
-            ARGS="$ARGS --skip-publish"
+            ARGS+=("--skip-publish")
           fi
           if [ -n "${{ inputs.custom_topic }}" ]; then
-            ARGS="$ARGS --topic=\"${{ inputs.custom_topic }}\""
+            ARGS+=("--topic=${{ inputs.custom_topic }}")
           fi
           if [ -n "${{ inputs.format }}" ]; then
-            ARGS="$ARGS --format=${{ inputs.format }}"
+            ARGS+=("--format=${{ inputs.format }}")
           fi
 
-          echo "Executing pipeline with arguments: $ARGS"
-          npx tsx scripts/run_pipeline.ts $ARGS
+          echo "Executing pipeline with arguments: ${ARGS[*]}"
+          npx tsx scripts/run_pipeline.ts "${ARGS[@]}"
 
       - name: Upload Generated Video Artifacts
         uses: actions/upload-artifact@v4
