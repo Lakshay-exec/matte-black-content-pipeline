@@ -1,5 +1,5 @@
 import React from 'react';
-import { Composition, registerRoot } from 'remotion';
+import { Composition } from 'remotion';
 import { ShortVideo } from './compositions/ShortVideo';
 import { LongVideo } from './compositions/LongVideo';
 import { VideoScriptData } from './types';
@@ -147,5 +147,4 @@ export const RemotionRoot: React.FC = () => {
   );
 };
 
-registerRoot(RemotionRoot);
 export default RemotionRoot;
