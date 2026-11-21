@@ -7,8 +7,10 @@ import sys
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 TEMP_DIR = os.path.join(ROOT_DIR, "temp")
+PUBLIC_DIR = os.path.join(ROOT_DIR, "public")
+os.makedirs(PUBLIC_DIR, exist_ok=True)
 SCRIPT_FILE = os.path.join(TEMP_DIR, "script.json")
-AUDIO_OUTPUT = os.path.join(TEMP_DIR, "voiceover.mp3")
+AUDIO_OUTPUT = os.path.join(PUBLIC_DIR, "voiceover.mp3")
 DATA_SHORT_OUTPUT = os.path.join(TEMP_DIR, "data_short.json")
 DATA_LONG_OUTPUT = os.path.join(TEMP_DIR, "data_long.json")
 

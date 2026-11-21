@@ -11,7 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 const TEMP_DIR = path.join(ROOT_DIR, 'temp');
-const IMAGES_DIR = path.join(TEMP_DIR, 'images');
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
+const IMAGES_DIR = path.join(PUBLIC_DIR, 'images');
 const SCRIPT_FILE = path.join(TEMP_DIR, 'script.json');
 const MASTER_REF_IMAGE = path.join(ROOT_DIR, 'assets', 'reference_statue.png');
 
@@ -79,7 +80,7 @@ export async function generateImages(): Promise<void> {
           const imgBuffer = Buffer.from(response.data.predictions[0].bytesBase64Encoded, 'base64');
           fs.writeFileSync(targetFile, imgBuffer);
           console.log(`[Step 3] Successfully generated and saved ${targetFile}`);
-          beat.statueImage = `temp/images/beat_${i}.png`;
+          beat.statueImage = `images/beat_${i}.png`;
           generated = true;
         }
       } catch (err: any) {
@@ -95,7 +96,7 @@ export async function generateImages(): Promise<void> {
         // If master doesn't exist, create an empty 1x1 placeholder
         fs.writeFileSync(targetFile, Buffer.from(''));
       }
-      beat.statueImage = `temp/images/beat_${i}.png`;
+      beat.statueImage = `images/beat_${i}.png`;
       console.log(`[Step 3] Applied master reference fallback for beat ${i}: ${targetFile}`);
     }
   }

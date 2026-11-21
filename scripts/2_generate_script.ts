@@ -60,7 +60,7 @@ function generateMockScript(idea: ContentIdea, targetFormat: 'short' | 'long'): 
         text: `Most people misunderstand what is happening with ${idea.title}. The real story is not in the headlines, but in the underlying architecture.`,
         statuePrompt: 'Matte-black blank-oval-face mannequin statue standing dead center looking forward in sharp studio contrast, pure #FFFFFF white background, minimalist composition',
         cameraMovement: 'zoom-in',
-        statueImage: 'assets/reference_statue.png',
+        statueImage: 'reference_statue.png',
         infoCard: {
           type: 'alert',
           badge: 'PARADIGM SHIFT',
@@ -76,7 +76,7 @@ function generateMockScript(idea: ContentIdea, targetFormat: 'short' | 'long'): 
         text: 'When you eliminate friction from complex systems, traditional workflows collapse. The data reveals an overwhelming velocity shift.',
         statuePrompt: 'Matte-black mannequin statue in three-quarters profile, head tilted down in deep intellectual focus, stark shadow on pure white #FFFFFF canvas',
         cameraMovement: 'pan-left',
-        statueImage: 'assets/reference_statue.png',
+        statueImage: 'reference_statue.png',
         infoCard: {
           type: 'metric',
           badge: 'VELOCITY INDEX',
@@ -93,7 +93,7 @@ function generateMockScript(idea: ContentIdea, targetFormat: 'short' | 'long'): 
         text: 'Those who adapt early establish an unassailable moat. Those who wait will be forced to rebuild from zero.',
         statuePrompt: 'Matte-black mannequin statue with arm raised pointing forward decisively, pure #FFFFFF clean background',
         cameraMovement: 'subtle-float',
-        statueImage: 'assets/reference_statue.png',
+        statueImage: 'reference_statue.png',
         infoCard: {
           type: 'takeaway',
           badge: 'STRATEGIC PILLARS',
@@ -113,7 +113,7 @@ function generateMockScript(idea: ContentIdea, targetFormat: 'short' | 'long'): 
         text: 'The architecture is already in motion. Stay sharp, question standard models, and subscribe for tomorrow’s intelligence.',
         statuePrompt: 'Matte-black blank-oval-face mannequin statue side silhouette against pure #FFFFFF white, dramatic ambient lighting',
         cameraMovement: 'dramatic-push',
-        statueImage: 'assets/reference_statue.png',
+        statueImage: 'reference_statue.png',
         infoCard: {
           type: 'quote',
           badge: 'FINAL VERDICT',
@@ -228,7 +228,7 @@ Return ONLY pure JSON. No markdown backticks, no explanations.
       // Ensure statueImage fallback
       scriptJson.beats.forEach((b, idx) => {
         if (!b.statueImage) {
-          b.statueImage = `temp/images/beat_${idx}.png`;
+          b.statueImage = `images/beat_${idx}.png`;
         }
       });
       fs.writeFileSync(OUTPUT_FILE, JSON.stringify(scriptJson, null, 2));
