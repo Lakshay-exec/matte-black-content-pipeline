@@ -1,6 +1,6 @@
 import React from 'react';
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
-import { WordTimestamp } from '../types.js';
+import { WordTimestamp } from '../types';
 
 interface KineticCaptionsProps {
   words: WordTimestamp[];

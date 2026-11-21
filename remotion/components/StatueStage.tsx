@@ -1,6 +1,6 @@
 import React from 'react';
 import { Img, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
-import { CameraMovement } from '../types.js';
+import { CameraMovement } from '../types';
 
 interface StatueStageProps {
   imageSrc: string;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
-import { KineticCaptions } from '../components/KineticCaptions.js';
-import { InfoCard } from '../components/InfoCard.js';
-import { StatueStage } from '../components/StatueStage.js';
-import { VideoScriptData } from '../types.js';
+import { KineticCaptions } from '../components/KineticCaptions';
+import { InfoCard } from '../components/InfoCard';
+import { StatueStage } from '../components/StatueStage';
+import { VideoScriptData } from '../types';
 
 export const LongVideo: React.FC<VideoScriptData> = ({
   headline,

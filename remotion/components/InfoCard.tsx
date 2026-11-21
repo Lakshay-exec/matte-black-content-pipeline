@@ -1,6 +1,6 @@
 import React from 'react';
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
-import { InfoCardData } from '../types.js';
+import { InfoCardData } from '../types';
 
 interface InfoCardProps {
   card: InfoCardData;

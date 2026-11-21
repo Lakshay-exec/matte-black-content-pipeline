@@ -1,8 +1,8 @@
 import React from 'react';
 import { Composition, registerRoot } from 'remotion';
-import { ShortVideo } from './compositions/ShortVideo.js';
-import { LongVideo } from './compositions/LongVideo.js';
-import { VideoScriptData } from './types.js';
+import { ShortVideo } from './compositions/ShortVideo';
+import { LongVideo } from './compositions/LongVideo';
+import { VideoScriptData } from './types';
 
 // Default mock props for local development and Studio preview
 const defaultMockData: VideoScriptData = {
