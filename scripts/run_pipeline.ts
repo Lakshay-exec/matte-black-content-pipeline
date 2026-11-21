@@ -100,7 +100,7 @@ async function main() {
         const shortOut = path.join(OUT_DIR, 'short.mp4');
         console.log(`\nRendering Short Video (9:16 vertical) -> ${shortOut} (${shortFrames} frames)...`);
 
-        const entryPoint = path.join(ROOT_DIR, 'remotion', 'Root.tsx');
+        const entryPoint = path.join(ROOT_DIR, 'remotion', 'index.ts');
         const shortCmd = `npx remotion render "${entryPoint}" ShortVideo "${shortOut}" --props="${DATA_SHORT_PATH}" --frames=0-${shortFrames - 1} --concurrency=4 --chromium-options="--no-sandbox"`;
         try {
           execSync(shortCmd, { stdio: 'inherit' });
@@ -117,7 +117,7 @@ async function main() {
         const longOut = path.join(OUT_DIR, 'long.mp4');
         console.log(`\nRendering Long Video (16:9 horizontal) -> ${longOut} (${longFrames} frames)...`);
 
-        const entryPoint = path.join(ROOT_DIR, 'remotion', 'Root.tsx');
+        const entryPoint = path.join(ROOT_DIR, 'remotion', 'index.ts');
         const longCmd = `npx remotion render "${entryPoint}" LongVideo "${longOut}" --props="${DATA_LONG_PATH}" --frames=0-${longFrames - 1} --concurrency=4 --chromium-options="--no-sandbox"`;
         try {
           execSync(longCmd, { stdio: 'inherit' });
