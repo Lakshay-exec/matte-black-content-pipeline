@@ -127,6 +127,12 @@ export const RemotionRoot: React.FC = () => {
         id="ShortVideo"
         component={ShortVideo}
         durationInFrames={Math.round(defaultMockData.totalDuration * defaultMockData.fps)}
+        calculateMetadata={({ props }) => {
+          const totalFrames = props?.totalDuration ? Math.round(props.totalDuration * (props.fps || 30)) : 360;
+          return {
+            durationInFrames: Math.max(30, totalFrames),
+          };
+        }}
         fps={defaultMockData.fps}
         width={1080}
         height={1920}
@@ -138,6 +144,12 @@ export const RemotionRoot: React.FC = () => {
         id="LongVideo"
         component={LongVideo}
         durationInFrames={Math.round(defaultMockData.totalDuration * defaultMockData.fps)}
+        calculateMetadata={({ props }) => {
+          const totalFrames = props?.totalDuration ? Math.round(props.totalDuration * (props.fps || 30)) : 360;
+          return {
+            durationInFrames: Math.max(30, totalFrames),
+          };
+        }}
         fps={defaultMockData.fps}
         width={1920}
         height={1080}
